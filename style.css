@@ -1,0 +1,806 @@
+/* ── Typography & Google Fonts ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --bg-sky: #75cbf3;
+  --card-bg: rgba(255, 255, 255, 0.45);
+  --card-border: rgba(255, 255, 255, 0.6);
+  --accent-navy: #00426b;
+  --accent-blue: #0066a2;
+  --accent-emerald: #059669;
+  --accent-rose: #e11d48;
+  --text-main: #1e3a5f;
+  --text-muted: #3b5a75;
+  --radius-card: 20px;
+  --radius-btn: 30px;
+}
+
+html,
+body,
+[class*="css"] {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+  color: var(--text-main);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.stMarkdown h1,
+.stMarkdown h2,
+.stMarkdown h3,
+.stMarkdown h4,
+.stMarkdown h5,
+.stMarkdown h6 {
+  color: #00426b !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+
+p,
+span,
+label,
+.stMarkdown p,
+.stMarkdown li {
+  color: var(--text-muted);
+}
+
+code {
+  background: rgba(0, 66, 107, 0.08) !important;
+  color: #00426b !important;
+  border: 1px solid rgba(0, 66, 107, 0.18) !important;
+  border-radius: 8px !important;
+  padding: 0.15rem 0.45rem !important;
+  font-size: 0.9em !important;
+  font-weight: 600 !important;
+  word-break: break-word !important;
+}
+
+/* ── App Canvas & Background Ambient Mesh ────────────────────────────────── */
+html body .stApp {
+  background: linear-gradient(135deg, #75cbf3 0%, #a4def5 100%) !important;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+html body .stApp::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 12% 25%, rgba(255, 255, 255, 0.45) 15%, transparent 25%),
+    radial-gradient(circle at 20% 35%, rgba(255, 255, 255, 0.35) 20%, transparent 35%),
+    radial-gradient(circle at 85% 65%, rgba(255, 255, 255, 0.45) 15%, transparent 25%),
+    radial-gradient(circle at 75% 80%, rgba(255, 255, 255, 0.35) 20%, transparent 35%);
+  z-index: 0;
+  pointer-events: none;
+  filter: blur(10px);
+}
+
+/* ── Sidebar Styling & User Profile Component ───────────────────────────── */
+[data-testid="stSidebar"] {
+  background: rgba(255, 255, 255, 0.35) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+[data-testid="stSidebar"] * {
+  color: #1e3a5f !important;
+}
+
+.sidebar-user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.user-avatar,
+.user-avatar * {
+  width: 80px;
+  height: 80px;
+  font-size: 2.2rem;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0, 66, 107, 0.2);
+  background: linear-gradient(135deg, #00426b 0%, #1e3a5f 100%);
+  color: #ffffff !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+.user-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00426b;
+}
+
+/* Toggle arrow button for sidebar */
+[data-testid="collapsedControl"] svg {
+  fill: #00426b !important;
+  color: #00426b !important;
+}
+
+/* Hide header padding/margins */
+.stAppViewMainContainer>.main {
+  padding-top: 1.5rem;
+}
+
+[data-testid="stHeader"] {
+  background: transparent !important;
+}
+
+/* ── Hero Header ───────────────────────────────────────────────────────────── */
+.hero-container {
+  position: relative;
+  text-align: center;
+  padding: 2.2rem 1.5rem 1.8rem;
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-card);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 15px 35px rgba(0, 66, 107, 0.05);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0, 66, 107, 0.1);
+  border: 1px solid rgba(0, 66, 107, 0.25);
+  color: #00426b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  margin-bottom: 0.9rem;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #00426b !important;
+  background: linear-gradient(135deg, #00426b 0%, #1e3a5f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* ── Streamlit Tabs ────────────────────────────────────────────────────────── */
+.stTabs [data-baseweb="tab-list"] {
+  background: rgba(255, 255, 255, 0.35) !important;
+  border: 1px solid rgba(255, 255, 255, 0.6) !important;
+  border-radius: 30px !important;
+  padding: 6px !important;
+  gap: 8px !important;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 25px rgba(0, 66, 107, 0.05);
+  margin-bottom: 2rem;
+}
+
+.stTabs [data-baseweb="tab"] {
+  border-radius: 24px !important;
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  padding: 0.65rem 1.4rem !important;
+  transition: all 0.25s ease !important;
+}
+
+.stTabs [data-baseweb="tab"] *,
+.stTabs [data-baseweb="tab"] p,
+.stTabs [data-baseweb="tab"] div,
+.stTabs [data-baseweb="tab"] span {
+  color: #2c4a5c !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+.stTabs [aria-selected="true"] {
+  background: #00426b !important;
+  border: 1px solid #00426b !important;
+  box-shadow: 0 6px 20px rgba(0, 66, 107, 0.2) !important;
+}
+
+.stTabs [aria-selected="true"] *,
+.stTabs [aria-selected="true"] p,
+.stTabs [aria-selected="true"] div,
+.stTabs [aria-selected="true"] span {
+  color: #ffffff !important;
+  font-weight: 800 !important;
+}
+
+.stTabs [data-baseweb="tab"]:hover:not([aria-selected="true"]) {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ── Button Hierarchy ──────────────────────────────────────────────────────── */
+.stButton>button {
+  background: #00426b !important;
+  color: #ffffff !important;
+  border: none !important;
+  border-radius: var(--radius-btn) !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  padding: 0.65rem 1.5rem !important;
+  box-shadow: 0 6px 18px rgba(0, 66, 107, 0.2) !important;
+  transition: all 0.25s ease !important;
+}
+
+.stButton>button *,
+.stButton>button p,
+.stButton>button span,
+.stButton>button div {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+.stButton>button:hover {
+  transform: translateY(-2px) !important;
+  background: #003050 !important;
+  box-shadow: 0 10px 25px rgba(0, 66, 107, 0.3) !important;
+}
+
+.stDownloadButton>button {
+  background: rgba(255, 255, 255, 0.4) !important;
+  border: 1px solid rgba(0, 66, 107, 0.25) !important;
+  color: #00426b !important;
+  border-radius: var(--radius-btn) !important;
+  font-weight: 600 !important;
+  padding: 0.6rem 1.2rem !important;
+  transition: all 0.2s ease !important;
+}
+
+.stDownloadButton>button:hover {
+  background: rgba(255, 255, 255, 0.7) !important;
+  transform: translateY(-1px) !important;
+}
+
+/* ── KPI Metric Cards ──────────────────────────────────────────────────────── */
+.kpi-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-card);
+  padding: 1.25rem 1.1rem;
+  text-align: left;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 25px rgba(0, 66, 107, 0.05);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.kpi-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 15px 30px rgba(0, 66, 107, 0.1);
+}
+
+.kpi-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+}
+
+.kpi-title {
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.kpi-icon {
+  font-size: 1.2rem;
+  padding: 0.35rem;
+  border-radius: 10px;
+  background: rgba(0, 66, 107, 0.08);
+}
+
+.kpi-val {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  line-height: 1.2;
+}
+
+.kpi-val.green {
+  color: #059669;
+}
+
+.kpi-val.amber {
+  color: #d97706;
+}
+
+.kpi-val.red {
+  color: #dc2626;
+}
+
+/* ── Anomaly & Suggestion Badges ───────────────────────────────────────────── */
+.anomaly-high,
+.anomaly-medium,
+.anomaly-low {
+  position: relative;
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 66, 107, 0.05);
+}
+
+.anomaly-high {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #991b1b;
+}
+
+.anomaly-medium {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #92400e;
+}
+
+.anomaly-low {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #1e40af;
+}
+
+.suggestion-card {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 66, 107, 0.15);
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  margin: 0.5rem 0;
+  font-size: 0.94rem;
+  color: #1e3a5f;
+  line-height: 1.5;
+  box-shadow: 0 4px 15px rgba(0, 66, 107, 0.04);
+}
+
+.suggestion-card strong {
+  color: #00426b;
+  font-weight: 700;
+}
+
+/* ── Utility Text Classes ──────────────────────────────────────────────────── */
+.sub-text {
+  color: #2c4a5c !important;
+  font-size: 0.95rem !important;
+  line-height: 1.6 !important;
+}
+
+.section-badge {
+  color: #00426b !important;
+  font-weight: 700 !important;
+  font-size: 1.02rem !important;
+  margin-top: 1.2rem !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.table-meta-text {
+  color: #2c4a5c !important;
+  font-size: 0.88rem !important;
+}
+
+.forgot-password-link {
+  text-align: center;
+  color: #2c4a5c;
+  font-size: 0.95rem;
+  margin: 0.8rem 0 1rem;
+  cursor: pointer;
+}
+
+/* ── Main Container & Authentication Screen Frosted Glass Card ──────────────── */
+html body .stAppViewMainContainer>.main>.block-container {
+  max-width: 1200px !important;
+  padding: 1.5rem 1rem !important;
+  margin: 0 auto !important;
+}
+
+html body [data-testid="stForm"] {
+  background: rgba(255, 255, 255, 0.28) !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  border: 1px solid rgb(255, 255, 255) !important;
+  border-radius: 40px !important;
+  padding: 5rem 5rem 5rem !important;
+  width: 460px !important;
+  max-width: 99vw !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06) !important;
+  box-sizing: border-box !important;
+  margin: 6vh auto 0 auto !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+/* Hide overlapping Streamlit form instruction text */
+html body [data-testid="stForm"] [data-testid="InputInstructions"] {
+  display: none !important;
+}
+
+html body .sky-title {
+  font-size: 1.8rem !important;
+  color: #2c4a5c !important;
+  font-weight: 400 !important;
+  margin-bottom: 1.8rem !important;
+  letter-spacing: -0.02em !important;
+  text-align: center !important;
+  width: 100% !important;
+  white-space: nowrap !important;
+  background: none !important;
+  -webkit-text-fill-color: #2c4a5c !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"] {
+  width: 100% !important;
+  margin-bottom: 0.8rem !important;
+}
+
+/* Universal reset for all inner elements inside login inputs */
+html body [data-testid="stForm"] [data-testid="stTextInput"] * {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Specifically remove BaseWeb inner container borders that cause the grey rectangle */
+html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="base-input"],
+html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="input"] {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+/* Outer pill container */
+html body [data-testid="stForm"] [data-testid="stTextInput"]>div>div {
+  background: #ffffff !important;
+  border-radius: 30px !important;
+  padding: 15px !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"] input {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  font-size: 1rem !important;
+  width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Fix browser autofill dark grey background on login inputs */
+html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill,
+html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill:hover,
+html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill:focus,
+html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+  -webkit-text-fill-color: #000000 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"]>div>div:focus-within {
+  box-shadow: 0 4px 20px rgba(0, 66, 107, 0.15) !important;
+  border: none !important;
+  outline: none !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"] button {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0.2rem 0.5rem !important;
+  width: auto !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"] button:hover {
+  background: transparent !important;
+  color: #00426b !important;
+  transform: none !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 1rem !important;
+  width: 100% !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button {
+  background: #00426b !important;
+  color: #ffffff !important;
+  border-radius: 30px !important;
+  padding: 0.75rem 2.5rem !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  border: none !important;
+  box-shadow: 0 8px 20px rgba(0, 66, 107, 0.25) !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+  width: 100% !important;
+  max-width: 220px !important;
+  margin: 0 auto !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button *,
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button p,
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button span,
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button div {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] button:hover {
+  transform: translateY(-2px) !important;
+  background: #003050 !important;
+  box-shadow: 0 10px 25px rgba(0, 66, 107, 0.35) !important;
+}
+
+html body .sky-toggle-container {
+  display: flex !important;
+  justify-content: center !important;
+  margin: 1.2rem auto 0 auto !important;
+  width: 380px !important;
+  max-width: 90vw !important;
+}
+
+html body .sky-toggle-container button {
+  background: #00426b !important;
+  color: #ffffff !important;
+  border-radius: 30px !important;
+  padding: 0.65rem 1.8rem !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 15px rgba(0, 66, 107, 0.2) !important;
+  border: none !important;
+  transition: transform 0.2s ease, background 0.2s ease !important;
+}
+
+html body .sky-toggle-container button *,
+html body .sky-toggle-container button p,
+html body .sky-toggle-container button span,
+html body .sky-toggle-container button div {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+}
+
+html body .sky-toggle-container button:hover {
+  background: #003050 !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── File Uploader Styling ─────────────────────────────────────────────────── */
+div[data-testid="stFileUploader"] {
+  background: rgba(255, 255, 255, 0.45);
+  border: 2px dashed rgba(0, 66, 107, 0.3);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+
+div[data-testid="stFileUploader"]:hover {
+  border-color: rgba(0, 66, 107, 0.6);
+}
+
+/* ── Feature Cards ────────────────────────────────────────────────────────── */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2.2rem;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-card);
+  padding: 1.3rem 1.2rem;
+  text-align: left;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  transition: transform 0.25s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.feature-icon-wrapper {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(0, 66, 107, 0.1);
+  border: 1px solid rgba(0, 66, 107, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.feature-title {
+  color: #00426b;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.feature-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ── Inputs & Form Controls ───────────────────────────────────────────────── */
+.stTextInput>div>div>input,
+.stSelectbox>div>div {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 66, 107, 0.2) !important;
+  color: #1e3a5f !important;
+  border-radius: 20px !important;
+  font-size: 0.96rem !important;
+  padding: 0.7rem 1.2rem !important;
+  box-shadow: 0 4px 12px rgba(0, 66, 107, 0.04) !important;
+}
+
+.stTextInput input::placeholder {
+  color: #64748b !important;
+}
+
+.stTextInput>div>div>input:focus,
+.stSelectbox>div>div:focus-within {
+  border-color: #00426b !important;
+  box-shadow: 0 0 0 2px rgba(0, 66, 107, 0.2) !important;
+}
+
+/* ── Suggested Question Chip Buttons Formatting ────────────────────────── */
+div[data-testid="stColumn"] button {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: 1px solid rgba(0, 66, 107, 0.25) !important;
+  color: #00426b !important;
+  border-radius: 30px !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  padding: 0.65rem 1.2rem !important;
+  box-shadow: 0 4px 12px rgba(0, 66, 107, 0.04) !important;
+  transition: all 0.2s ease !important;
+  white-space: normal !important;
+  text-align: left !important;
+  height: auto !important;
+}
+
+div[data-testid="stColumn"] button:hover {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border-color: rgba(0, 66, 107, 0.5) !important;
+  color: #00263e !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(0, 66, 107, 0.08) !important;
+}
+
+div[data-testid="stColumn"] button p,
+div[data-testid="stColumn"] button span {
+  color: #00426b !important;
+  font-weight: 600 !important;
+}
+
+/* ── Chat Messages ────────────────────────────────────────────────────────── */
+[data-testid="stChatMessage"] {
+  background: rgba(255, 255, 255, 0.65) !important;
+  border: 1px solid rgba(255, 255, 255, 0.85) !important;
+  border-radius: 20px !important;
+  padding: 1.2rem 1.4rem !important;
+  margin-bottom: 0.9rem !important;
+  box-shadow: 0 6px 20px rgba(0, 66, 107, 0.06) !important;
+  -webkit-backdrop-filter: blur(15px) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+[data-testid="stChatMessage"] p,
+[data-testid="stChatMessage"] li,
+[data-testid="stChatMessage"] span,
+[data-testid="stChatMessage"] div {
+  color: #1e3a5f !important;
+  font-size: 0.98rem !important;
+  line-height: 1.65 !important;
+}
+
+[data-testid="stChatMessage"] strong,
+[data-testid="stChatMessage"] b {
+  color: #00426b !important;
+  font-weight: 700 !important;
+}
+
+[data-testid="stChatMessage"] h1,
+[data-testid="stChatMessage"] h2,
+[data-testid="stChatMessage"] h3,
+[data-testid="stChatMessage"] h4 {
+  color: #00426b !important;
+  margin-top: 0.4rem !important;
+  margin-bottom: 0.6rem !important;
+}
+
+/* Hide default clutter */
+#MainMenu,
+footer {
+  visibility: hidden;
+}
+
+/* ── Plotly Chart Modebar (toolbar) ─────────────────────── */
+.modebar-container {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border-radius: 12px !important;
+  padding: 4px 6px !important;
+  box-shadow: 0 4px 15px rgba(0, 66, 107, 0.1) !important;
+  border: 1px solid rgba(0, 66, 107, 0.1) !important;
+}
+
+.modebar-btn path {
+  fill: #00426b !important;
+  opacity: 0.7 !important;
+}
+
+.modebar-btn:hover path {
+  fill: #00426b !important;
+  opacity: 1 !important;
+}
+
+.modebar-btn.active path {
+  fill: #00426b !important;
+  opacity: 1 !important;
+}
+
+.modebar-group {
+  background: transparent !important;
+}
+
+.modebar {
+  background: transparent !important;
+}
