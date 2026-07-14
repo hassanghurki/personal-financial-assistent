@@ -469,48 +469,52 @@ html body [data-testid="stForm"] [data-testid="stTextInput"] {
   margin-bottom: 0.8rem !important;
 }
 
-/* Universal reset for all inner elements inside login inputs */
-html body [data-testid="stForm"] [data-testid="stTextInput"] * {
+/* Remove default borders and backgrounds from Streamlit BaseWeb containers */
+html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="base-input"] {
+  background: transparent !important;
   border: none !important;
-  border-radius: 0 !important;
   outline: none !important;
   box-shadow: none !important;
-  background: transparent !important;
+  width: 100% !important;
 }
 
-/* Specifically remove BaseWeb inner container borders that cause the grey rectangle */
-html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="base-input"],
-html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="input"] {
-  border: none !important;
-  border-radius: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  padding: 0 !important;
-}
-
-/* Outer pill container */
-html body [data-testid="stForm"] [data-testid="stTextInput"]>div>div {
+/* White pill container styling */
+html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="input"],
+html body [data-testid="stForm"] [data-testid="stTextInput"] > div > div {
   background: #ffffff !important;
   border-radius: 30px !important;
-  padding: 15px !important;
-  border: none !important;
+  padding: 6px 16px !important;
+  border: 1px solid rgba(0, 66, 107, 0.15) !important;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04) !important;
   width: 100% !important;
   box-sizing: border-box !important;
-  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease !important;
 }
 
+html body [data-testid="stForm"] [data-testid="stTextInput"] [data-baseweb="input"]:focus-within,
+html body [data-testid="stForm"] [data-testid="stTextInput"] > div > div:focus-within {
+  box-shadow: 0 4px 20px rgba(0, 66, 107, 0.2) !important;
+  border-color: #00426b !important;
+}
+
+/* Input text styling */
 html body [data-testid="stForm"] [data-testid="stTextInput"] input {
-  background: #ffffff !important;
-  color: #000000 !important;
+  background: transparent !important;
+  color: #1e3a5f !important;
   border: none !important;
-  border-radius: 0 !important;
   outline: none !important;
   box-shadow: none !important;
-  font-size: 1rem !important;
+  font-size: 0.95rem !important;
   width: 100% !important;
-  padding: 0 !important;
+  padding: 8px 0 !important;
+}
+
+/* Input placeholder text styling */
+html body [data-testid="stForm"] [data-testid="stTextInput"] input::placeholder {
+  color: #64748b !important;
+  opacity: 1 !important;
 }
 
 /* Fix browser autofill dark grey background on login inputs */
@@ -519,30 +523,36 @@ html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autof
 html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill:focus,
 html body [data-testid="stForm"] [data-testid="stTextInput"] input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
-  -webkit-text-fill-color: #000000 !important;
+  -webkit-text-fill-color: #1e3a5f !important;
   transition: background-color 5000s ease-in-out 0s;
 }
 
-html body [data-testid="stForm"] [data-testid="stTextInput"]>div>div:focus-within {
-  box-shadow: 0 4px 20px rgba(0, 66, 107, 0.15) !important;
-  border: none !important;
-  outline: none !important;
-}
-
+/* Password toggle eye button styling */
 html body [data-testid="stForm"] [data-testid="stTextInput"] button {
   background: transparent !important;
   border: none !important;
-  color: #ffffff !important;
+  color: #00426b !important;
   box-shadow: none !important;
   margin: 0 !important;
-  padding: 0.2rem 0.5rem !important;
+  padding: 0.2rem 0.4rem !important;
   width: auto !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
-html body [data-testid="stForm"] [data-testid="stTextInput"] button:hover {
-  background: transparent !important;
+html body [data-testid="stForm"] [data-testid="stTextInput"] button svg,
+html body [data-testid="stForm"] [data-testid="stTextInput"] button path {
+  fill: #00426b !important;
+  stroke: #00426b !important;
   color: #00426b !important;
-  transform: none !important;
+}
+
+html body [data-testid="stForm"] [data-testid="stTextInput"] button:hover svg,
+html body [data-testid="stForm"] [data-testid="stTextInput"] button:hover path {
+  fill: #00263e !important;
+  stroke: #00263e !important;
+  color: #00263e !important;
 }
 
 html body [data-testid="stForm"] [data-testid="stFormSubmitButton"] {
